@@ -1,0 +1,12 @@
+[project]
+name = "celery-architecture"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "celery>=5.5.1",
+    "fastapi>=0.115.12",
+    "pydantic>=2.11.3",
+    "redis>=5.2.1",
+]

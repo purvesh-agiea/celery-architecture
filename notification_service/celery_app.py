@@ -1,22 +1,11 @@
-# ==========================================
-# notification_service/__init__.py
-# ==========================================
-# (This file can be empty)
-
-
-# ==========================================
-# notification_service/celery_app.py
-# ==========================================
 from celery import Celery
-# Assuming common config is importable
 from common.celery_config import BROKER_URL, RESULT_BACKEND, NOTIFICATION_QUEUE
 
-# This Celery app instance is for the Notification Service worker
 app = Celery(
-    'notification_service.tasks', # Namespace for tasks in this service
+    'notification_service.tasks',
     broker=BROKER_URL,
     backend=RESULT_BACKEND,
-    include=['notification_service.tasks'] # Module(s) containing tasks
+    include=['notification_service.tasks']
 )
 
 app.conf.update(

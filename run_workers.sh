@@ -1,14 +1,5 @@
-# ==========================================
-# run_workers.sh
-# ==========================================
-#!/bin/bash
-
 echo "Starting E-commerce Celery Workers..."
 
-# Make sure RabbitMQ & Redis (if used for backend) are running!
-# Ensure you run this script from the directory containing the service folders
-# (e.g., ecommerce_celery/)
-# Set PYTHONPATH to include the current directory so imports work
 export PYTHONPATH=.
 
 # Start Order Service Worker
@@ -41,9 +32,6 @@ echo "Notification Service Worker PID: $NOTIFY_PID"
 
 echo "Workers started. Press Ctrl+C in this terminal to stop them."
 
-# Basic mechanism to keep script running and allow stopping workers
-# When Ctrl+C is pressed, the trap catches the SIGINT signal and kills the background PIDs
 trap "echo 'Stopping workers...'; kill $ORDER_PID $NOTIFY_PID 2>/dev/null; exit" SIGINT SIGTERM
 
-# Wait indefinitely until a signal (like SIGINT from Ctrl+C) is received
 wait
